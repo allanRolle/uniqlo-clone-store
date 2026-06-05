@@ -87,11 +87,7 @@
             d'automatisation.
           </p>
 
-          <form
-            id="signup-form"
-            onsubmit="handleSignup(event)"
-            class="space-y-4 pt-2"
-          >
+          <form id="signup-form" class="space-y-4 pt-2">
             <div>
               <label
                 for="signup-name"
@@ -150,49 +146,65 @@
     </footer>
 
     <script src="global.js"></script>
-    <script>
+    <script type="module">
       // Traitement de l'inscription (Sign Up)
-      // Traitement de l'inscription (Sign Up)
-      function handleSignup(e) {
-        e.preventDefault()
+      // Importez la fonction nécessaire (assurez-vous d'avoir un type="module" dans votre balise script)
+      import { registerUser } from './api.js'
+      import { authenticateUser } from './api.js' // Importez la nouvelle fonction
 
-        const name = document.getElementById('signup-name').value.trim()
-        const email = document.getElementById('signup-email').value.trim()
-        const password = document.getElementById('signup-password').value
+      // On attend que le DOM soit chargé pour attacher l'événement
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('signup-form')
 
-        // 1. Appel de la fonction globale d'enregistrement
-        const result = registerUser(name, email, password)
+        if (form) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            console.log('Événement submit détecté !') // Si ça ne s'affiche pas, le problème est dans le HTML (ID)
 
-        if (result.success) {
-          alert(
-            'Compte créé avec succès ! Bienvenue chez UNIQLO Style.\n\nVeuillez maintenant compléter vos informations de livraison.'
-          )
+            const name = document.getElementById('signup-name').value.trim()
+            const email = document.getElementById('signup-email').value.trim()
+            const password = document.getElementById('signup-password').value
 
-          // 2. CORRECTION : Redirection immédiate vers la page de profil
-          window.location.href = 'account-information.html'
+            // Appel à l'API
+            const result = await registerUser({ name, email, password })
+
+            if (result) {
+              alert('Compte créé avec succès !')
+              window.location.href = 'account-information.html'
+            } else {
+              alert(
+                'Erreur lors de la création du compte. Vérifiez la console.'
+              )
+            }
+          })
         } else {
-          alert(result.message)
+          console.error("Formulaire 'signup-form' introuvable dans le HTML !")
         }
-      }
+      })
 
-      // Traitement de la connexion (Login)
-      function handleLogin(e) {
+      async function handleLogin(e) {
         e.preventDefault()
 
         const email = document.getElementById('login-email').value.trim()
         const password = document.getElementById('login-password').value
 
-        // Appel de la fonction globale
-        const result = authenticateUser(email, password)
+        // On attend la réponse du serveur
+        const result = await authenticateUser(email, password)
 
         if (result.success) {
           alert(`Ravi de vous revoir, ${result.name} !`)
-          // Redirection vers l'accueil une fois connecté
+          // Stockage simple pour identifier la session (étape optionnelle pour la suite)
+          localStorage.setItem('user_name', result.name)
           window.location.href = 'index.html'
         } else {
           alert(result.message)
         }
       }
+
+      // Attacher l'événement au formulaire de connexion
+      document
+        .getElementById('login-form')
+        .addEventListener('submit', handleLogin)
     </script>
   </body>
 </html>
