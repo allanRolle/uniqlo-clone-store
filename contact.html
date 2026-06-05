@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIQLO Style - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      .uniqlo-red {
+        background-color: #ff0000;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <!-- BARRE DE NAVIGATION ALIGNÉE (Style Uniqlo) -->
+    <div id="global-header"></div>
+
+    <!-- SECTION PRINCIPALE CONTACT -->
+    <main class="container mx-auto px-4 py-16 max-w-5xl">
+      <h1
+        class="text-2xl font-black tracking-widest uppercase mb-12 border-b border-gray-900 pb-4"
+      >
+        Contactez-nous
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <!-- COLONNE 1 : INFORMATIONS MAGASIN / SUPPORT -->
+        <div class="space-y-8">
+          <div class="space-y-3">
+            <h2
+              class="text-sm font-black uppercase tracking-wider text-gray-900"
+            >
+              Siège social & Flagship
+            </h2>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              <strong>QAQLO France</strong><br />
+              39 Rue des Francs-Bourgeois<br />
+              75004 Paris, France
+            </p>
+          </div>
+
+          <div class="space-y-3 border-t border-gray-100 pt-6">
+            <h2
+              class="text-sm font-black uppercase tracking-wider text-gray-900"
+            >
+              Service Client (Sandbox QA)
+            </h2>
+            <p class="text-xs text-gray-600">
+              <span class="font-bold inline-block w-20 text-gray-400 uppercase"
+                >Téléphone :</span
+              >
+              +33 (0)1 00 00 00 00<br />
+              <span class="font-bold inline-block w-20 text-gray-400 uppercase"
+                >Email :</span
+              >
+              support@qaqlo-sandbox.com
+            </p>
+          </div>
+
+          <div class="space-y-3 border-t border-gray-100 pt-6">
+            <h2
+              class="text-sm font-black uppercase tracking-wider text-gray-900"
+            >
+              Heures d'ouverture
+            </h2>
+            <p class="text-xs text-gray-600 space-y-1">
+              <span class="block"
+                ><span class="font-bold text-gray-500 inline-block w-28"
+                  >Lundi - Samedi :</span
+                >
+                10:00 – 20:00</span
+              >
+              <span class="block"
+                ><span class="font-bold text-gray-500 inline-block w-28"
+                  >Dimanche :</span
+                >
+                11:00 – 19:00</span
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- COLONNE 2 : FORMULAIRE DE CONTACT -->
+        <div class="bg-gray-50 p-8 border border-gray-100 rounded-sm">
+          <h2
+            class="text-sm font-black uppercase tracking-wider text-gray-900 mb-2"
+          >
+            Envoyer un message
+          </h2>
+          <p class="text-xs text-gray-500 mb-6">
+            Utilisez ce formulaire pour tester vos scripts de validation d'envoi
+            d'emails ou de messages.
+          </p>
+
+          <form
+            id="contact-form"
+            onsubmit="handleContactSubmit(event)"
+            class="space-y-4"
+          >
+            <div>
+              <label
+                for="contact-name"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Nom complet</label
+              >
+              <input
+                type="text"
+                id="contact-name"
+                required
+                class="w-full bg-white border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                for="contact-email"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Adresse email</label
+              >
+              <input
+                type="email"
+                id="contact-email"
+                required
+                class="w-full bg-white border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                for="contact-subject"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Sujet</label
+              >
+              <input
+                type="text"
+                id="contact-subject"
+                required
+                class="w-full bg-white border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                for="contact-message"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Votre message</label
+              >
+              <textarea
+                id="contact-message"
+                rows="5"
+                required
+                class="w-full bg-white border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              id="contact-submit-btn"
+              class="w-full bg-black text-white text-xs font-bold py-4 uppercase tracking-widest hover:bg-red-600 transition text-center rounded-sm"
+            >
+              Envoyer le message
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-gray-50 border-t border-gray-200 py-12 text-xs text-center text-gray-500 mt-24"
+    >
+      <p class="font-bold mb-2">PROJET SANDBOX QA - CONCEPT MULTI-PAGES 2026</p>
+    </footer>
+
+    <script src="global.js"></script>
+    <script>
+      function handleContactSubmit(e) {
+        e.preventDefault()
+        const name = document.getElementById('contact-name').value
+
+        // Notification de succès parfaite pour tester les popups natifs
+        alert(
+          `Merci ${name}, votre message a été envoyé avec succès au support !`
+        )
+
+        // Reset du formulaire
+        document.getElementById('contact-form').reset()
+      }
+    </script>
+  </body>
+</html>

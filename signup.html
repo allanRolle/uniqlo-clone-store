@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIQLO Style - Connexion / Inscription</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      .uniqlo-red {
+        background-color: #ff0000;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <div id="global-header"></div>
+
+    <main class="container mx-auto px-4 py-16 max-w-5xl">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-16 divide-y md:divide-y-0 md:divide-x divide-gray-200"
+      >
+        <div class="space-y-6 pb-12 md:pb-0">
+          <h2
+            class="text-xl font-black uppercase tracking-widest text-gray-900 border-b border-gray-900 pb-3"
+          >
+            Connexion
+          </h2>
+          <p class="text-xs text-gray-500">
+            Si vous possédez déjà un compte de test, connectez-vous ci-dessous.
+          </p>
+
+          <form
+            id="login-form"
+            onsubmit="handleLogin(event)"
+            class="space-y-4 pt-2"
+          >
+            <div>
+              <label
+                for="login-email"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Identifiant / Email</label
+              >
+              <input
+                type="email"
+                id="login-email"
+                required
+                class="w-full border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                for="login-password"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Mot de passe</label
+              >
+              <input
+                type="password"
+                id="login-password"
+                required
+                class="w-full border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <button
+              type="submit"
+              id="login-submit-btn"
+              class="w-full bg-black text-white text-xs font-bold py-4 uppercase tracking-widest hover:bg-red-600 transition text-center rounded-sm"
+            >
+              Se connecter
+            </button>
+          </form>
+        </div>
+
+        <div class="space-y-6 pt-12 md:pt-0 md:pl-16">
+          <h2
+            class="text-xl font-black uppercase tracking-widest text-gray-900 border-b border-gray-900 pb-3"
+          >
+            Créer un compte
+          </h2>
+          <p class="text-xs text-gray-500">
+            Créez vos profils utilisateurs pour simuler vos flux d'inscription
+            d'automatisation.
+          </p>
+
+          <form
+            id="signup-form"
+            onsubmit="handleSignup(event)"
+            class="space-y-4 pt-2"
+          >
+            <div>
+              <label
+                for="signup-name"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Nom complet</label
+              >
+              <input
+                type="text"
+                id="signup-name"
+                required
+                class="w-full border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                for="signup-email"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Adresse email</label
+              >
+              <input
+                type="email"
+                id="signup-email"
+                required
+                class="w-full border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                for="signup-password"
+                class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1"
+                >Mot de passe</label
+              >
+              <input
+                type="password"
+                id="signup-password"
+                required
+                class="w-full border border-gray-300 p-3 text-xs font-medium focus:outline-none focus:border-black rounded-sm"
+              />
+            </div>
+            <button
+              type="submit"
+              id="signup-submit-btn"
+              class="w-full bg-white border border-black text-black text-xs font-bold py-4 uppercase tracking-widest hover:bg-gray-50 transition text-center rounded-sm"
+            >
+              Créer mon compte
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="bg-gray-50 border-t border-gray-200 py-12 text-xs text-center text-gray-500 mt-24"
+    >
+      <p class="font-bold mb-2">PROJET SANDBOX QA - CONCEPT MULTI-PAGES 2026</p>
+    </footer>
+
+    <script src="global.js"></script>
+    <script>
+      // Traitement de l'inscription (Sign Up)
+      // Traitement de l'inscription (Sign Up)
+      function handleSignup(e) {
+        e.preventDefault()
+
+        const name = document.getElementById('signup-name').value.trim()
+        const email = document.getElementById('signup-email').value.trim()
+        const password = document.getElementById('signup-password').value
+
+        // 1. Appel de la fonction globale d'enregistrement
+        const result = registerUser(name, email, password)
+
+        if (result.success) {
+          alert(
+            'Compte créé avec succès ! Bienvenue chez UNIQLO Style.\n\nVeuillez maintenant compléter vos informations de livraison.'
+          )
+
+          // 2. CORRECTION : Redirection immédiate vers la page de profil
+          window.location.href = 'account-information.html'
+        } else {
+          alert(result.message)
+        }
+      }
+
+      // Traitement de la connexion (Login)
+      function handleLogin(e) {
+        e.preventDefault()
+
+        const email = document.getElementById('login-email').value.trim()
+        const password = document.getElementById('login-password').value
+
+        // Appel de la fonction globale
+        const result = authenticateUser(email, password)
+
+        if (result.success) {
+          alert(`Ravi de vous revoir, ${result.name} !`)
+          // Redirection vers l'accueil une fois connecté
+          window.location.href = 'index.html'
+        } else {
+          alert(result.message)
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQLO Style - Mes Commandes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased">
+    <div id="global-header"></div>
+
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-4 border-b border-gray-200 gap-4"
+      >
+        <div>
+          <h1 class="text-xl font-black tracking-widest uppercase">
+            Mon Espace Client
+          </h1>
+          <p class="text-xs text-gray-400 uppercase tracking-wider mt-1">
+            Historique de vos achats sécurisés
+          </p>
+        </div>
+        <a
+          href="products.html"
+          class="text-xs font-black uppercase tracking-wider border border-black px-4 py-2 hover:bg-black hover:text-white transition"
+          >Continuer mes achats</a
+        >
+      </div>
+
+      <div id="orders-container" class="space-y-6">
+        <p class="text-xs text-gray-400 italic">
+          Chargement de votre historique...
+        </p>
+      </div>
+    </main>
+
+    <script src="global.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const paymentForm = document.getElementById('payment-form')
+
+        if (paymentForm) {
+          paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const cart = JSON.parse(localStorage.getItem('uniqlo_cart')) || []
+            const user = JSON.parse(localStorage.getItem('userProfile'))
+            const discount = parseFloat(localStorage.getItem('discount')) || 0
+
+            let subtotal = 0
+            cart.forEach((item) => {
+              // Note : assurez-vous que la variable 'products' est bien définie globalement
+              const p =
+                typeof products !== 'undefined'
+                  ? products.find((prod) => prod.id == item.id)
+                  : null
+              if (p) subtotal += p.price * item.qty
+            })
+
+            const newOrder = {
+              orderId: 'UNIQ-' + Date.now(),
+              date: new Date().toLocaleDateString(),
+              total: subtotal * (1 - discount),
+              items: cart.map((item) => ({
+                product:
+                  typeof products !== 'undefined'
+                    ? products.find((p) => p.id == item.id)
+                    : null,
+                qty: item.qty,
+              })),
+            }
+
+            const history =
+              JSON.parse(localStorage.getItem('uniqlo_orders_history')) || []
+            history.push(newOrder)
+            localStorage.setItem(
+              'uniqlo_orders_history',
+              JSON.stringify(history)
+            )
+
+            localStorage.removeItem('uniqlo_cart')
+            localStorage.removeItem('discount')
+
+            alert('Commande confirmée !')
+            window.location.href = 'orders-history.html'
+          })
+        }
+      })
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const ordersContainer = document.getElementById('orders-container')
+        const ordersHistory =
+          JSON.parse(localStorage.getItem('uniqlo_orders_history')) || []
+
+        if (ordersContainer) {
+          if (ordersHistory.length === 0) {
+            ordersContainer.innerHTML = `<p class="text-xs text-gray-400 italic">Aucune commande trouvée.</p>`
+          } else {
+            ordersContainer.innerHTML = ''
+            ordersHistory.forEach((order, index) => {
+              const itemsHtml = order.items
+                ? order.items
+                    .map(
+                      (item) => `
+    <div class="flex justify-between text-xs py-1 text-gray-600">
+        <span>${item.product?.name || 'Produit'} x${item.qty}</span>
+        <span class="font-bold">${(item.product?.price * item.qty || 0).toFixed(2)} €</span>
+    </div>`
+                    )
+                    .join('')
+                : ''
+
+              ordersContainer.innerHTML += `
+    <div class="bg-white border p-4 mb-4 shadow-sm">
+        <h3 class="font-bold text-sm border-b pb-2 mb-2">Commande du ${order.date || ''}</h3>
+        <p class="text-xs text-gray-500 mb-2">
+  Adresse : ${order.profile?.address || ''} ${order.profile?.zipcode || ''} ${order.profile?.city || ''}
+</p>
+        <div class="mb-2">${itemsHtml}</div>
+        <p class="text-xs font-bold mt-2">Coupon utilisé : ${order.couponUsed || 'Aucun'}</p>
+        <p class="text-sm font-black mt-2">Total : ${(order.total || 0).toFixed(2)} €</p>
+        <button onclick="downloadOrderPDF(${index})" class="mt-4 text-[10px] uppercase underline text-red-600 font-bold hover:text-black">
+            Télécharger récapitulatif PDF
+        </button>
+    </div>`
+            })
+          }
+        }
+      })
+
+      function downloadOrderPDF(index) {
+        const ordersHistory =
+          JSON.parse(localStorage.getItem('uniqlo_orders_history')) || []
+        const order = ordersHistory[index]
+        if (!order) return
+
+        const { jsPDF } = window.jspdf
+        const doc = new jsPDF()
+
+        doc.setFontSize(16)
+        doc.text('RECAPITULATIF DE COMMANDE', 14, 20)
+
+        doc.setFontSize(10)
+        doc.text('ID Commande: ' + (order.orderId || 'N/A'), 14, 30)
+        doc.text('Date: ' + (order.date || 'N/A'), 14, 35)
+        doc.text(
+          'Adresse: ' + (order.profile?.address || 'Non renseignée'),
+          14,
+          40
+        )
+        doc.text('Coupon utilisé: ' + (order.couponUsed || 'Aucun'), 14, 45)
+
+        doc.text('--------------------------------------------------', 14, 55)
+
+        let y = 65
+        if (order.items) {
+          order.items.forEach((item) => {
+            const line = `${item.product?.name || 'Produit'} (x${item.qty}) - ${(item.product?.price * item.qty || 0).toFixed(2)} €`
+            doc.text(line, 14, y)
+            y += 8
+          })
+        }
+
+        doc.text('--------------------------------------------------', 14, y)
+        doc.setFontSize(12)
+        doc.text(
+          'TOTAL PAYÉ : ' + (order.total || 0).toFixed(2) + ' €',
+          14,
+          y + 10
+        )
+
+        doc.save(`commande-${order.orderId}.pdf`)
+      }
+    </script>
+  </body>
+</html>

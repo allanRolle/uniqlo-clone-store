@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIQLO Style - Home Sandbox QA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      .uniqlo-red {
+        background-color: #ff0000;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <div id="global-header"></div>
+
+    <section
+      class="relative bg-gray-100 h-[60vh] overflow-hidden flex items-center"
+    >
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600"
+          class="w-full h-full object-cover object-center opacity-80"
+          alt="Bannière Collection"
+        />
+      </div>
+      <div
+        class="container mx-auto px-4 relative z-10 max-w-xl bg-white/90 p-8 shadow-sm ml-4 md:ml-12"
+      >
+        <span class="text-xs font-bold tracking-widest text-red-600 uppercase"
+          >Nouvelle Collection 2026</span
+        >
+        <h1
+          class="text-3xl md:text-5xl font-extrabold tracking-tight mt-2 mb-4 leading-tight text-gray-900"
+        >
+          Le vêtement au service de vos tests.
+        </h1>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+          Simplicité, qualité et longévité. Une interface épurée pensée
+          spécifiquement pour valider vos assertions et scripts
+          d'automatisation.
+        </p>
+
+        <a
+          href="products.html"
+          id="cta-all-products"
+          class="bg-black text-white text-xs font-bold px-6 py-4 uppercase tracking-wider hover:bg-red-600 transition inline-block"
+        >
+          Voir tous les produits <i class="fa fa-arrow-right ml-2 text-xs"></i>
+        </a>
+      </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-black tracking-wider uppercase">
+          Acheter par catégorie
+        </h2>
+        <div class="w-12 h-1 bg-black mx-auto mt-2"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group relative h-96 overflow-hidden bg-gray-100">
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            alt="Femme"
+          />
+          <div
+            class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"
+          ></div>
+          <div
+            class="absolute bottom-6 left-6 right-6 flex justify-between items-center bg-white p-4 shadow"
+          >
+            <div>
+              <h3 class="font-bold text-sm tracking-wide uppercase">FEMME</h3>
+              <p class="text-xs text-gray-400">Robes, tops & essentiels</p>
+            </div>
+            <a
+              href="products.html?cat=Women"
+              class="text-xs font-bold border-b border-black hover:text-red-600 hover:border-red-600 transition"
+              >Voir</a
+            >
+          </div>
+        </div>
+
+        <div class="group relative h-96 overflow-hidden bg-gray-100">
+          <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            alt="Homme"
+          />
+          <div
+            class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"
+          ></div>
+          <div
+            class="absolute bottom-6 left-6 right-6 flex justify-between items-center bg-white p-4 shadow"
+          >
+            <div>
+              <h3 class="font-bold text-sm tracking-wide uppercase">HOMME</h3>
+              <p class="text-xs text-gray-400">T-shirts, jeans & vestes</p>
+            </div>
+            <a
+              href="products.html?cat=Men"
+              class="text-xs font-bold border-b border-black hover:text-red-600 hover:border-red-600 transition"
+              >Voir</a
+            >
+          </div>
+        </div>
+
+        <div class="group relative h-96 overflow-hidden bg-gray-100">
+          <img
+            src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            alt="Enfant"
+          />
+          <div
+            class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"
+          ></div>
+          <div
+            class="absolute bottom-6 left-6 right-6 flex justify-between items-center bg-white p-4 shadow"
+          >
+            <div>
+              <h3 class="font-bold text-sm tracking-wide uppercase">ENFANT</h3>
+              <p class="text-xs text-gray-400">Vêtements confortables</p>
+            </div>
+            <a
+              href="products.html?cat=Kids"
+              class="text-xs font-bold border-b border-black hover:text-red-600 hover:border-red-600 transition"
+              >Voir</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="bg-gray-50 border-t border-gray-200 py-12 text-xs text-center text-gray-500"
+    >
+      <p class="font-bold mb-2">PROJET SANDBOX QA - CONCEPT MULTI-PAGES 2026</p>
+      <p>Inspiré par le minimalisme d'Uniqlo pour des tests plus robustes.</p>
+    </footer>
+
+    <script src="global.js"></script>
+  </body>
+</html>

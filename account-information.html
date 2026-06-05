@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIQLO Style - Informations du compte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased">
+    <div id="global-header"></div>
+
+    <main class="container mx-auto px-4 py-12 max-w-lg">
+      <div class="bg-white p-8 border border-gray-200 rounded-sm shadow-sm">
+        <h1
+          class="text-xl font-black tracking-widest uppercase mb-2 text-center"
+        >
+          Informations du compte
+        </h1>
+        <p
+          class="text-xs text-gray-400 text-center uppercase tracking-wider mb-8"
+        >
+          Complétez votre profil pour faciliter vos prochaines commandes
+        </p>
+
+        <form id="profile-form" class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label
+                class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                >Prénom</label
+              >
+              <input
+                type="text"
+                id="firstname"
+                required
+                class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                >Nom</label
+              >
+              <input
+                type="text"
+                id="lastname"
+                required
+                class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              class="block text-[11px] font-black uppercase tracking-wider mb-1"
+              >Téléphone mobile</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              required
+              placeholder="0612345678"
+              class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+            />
+          </div>
+
+          <div>
+            <label
+              class="block text-[11px] font-black uppercase tracking-wider mb-1"
+              >Adresse (Rue, Avenue...)</label
+            >
+            <input
+              type="text"
+              id="address"
+              required
+              placeholder="12 rue de l'Exemple"
+              class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+            />
+          </div>
+
+          <div class="grid grid-cols-3 gap-4">
+            <div class="col-span-1">
+              <label
+                class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                >Code Postal</label
+              >
+              <input
+                type="text"
+                id="zipcode"
+                required
+                placeholder="75001"
+                class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+              />
+            </div>
+            <div class="col-span-2">
+              <label
+                class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                >Ville</label
+              >
+              <input
+                type="text"
+                id="city"
+                required
+                placeholder="Paris"
+                class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-black text-white text-xs font-black uppercase tracking-widest py-3 hover:bg-red-600 transition duration-300 mt-6"
+          >
+            Enregistrer et continuer
+          </button>
+        </form>
+      </div>
+    </main>
+    @
+
+    <script src="global.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('profile-form')
+
+        // Gestion de la soumission du formulaire
+        form.addEventListener('submit', (e) => {
+          e.preventDefault()
+
+          const firstnameValue = document
+            .getElementById('firstname')
+            .value.trim()
+          const lastnameValue = document.getElementById('lastname').value.trim()
+
+          // 1. Groupement des informations de profil pour le checkout (inchangé)
+          const profileData = {
+            firstname: firstnameValue,
+            lastname: lastnameValue,
+            phone: document.getElementById('phone').value.trim(),
+            address: document.getElementById('address').value.trim(),
+            zipcode: document.getElementById('zipcode').value.trim(),
+            city: document.getElementById('city').value.trim(),
+            updatedAt: new Date().toISOString(),
+          }
+
+          // Sauvegarde locale persistante du profil pour la commande
+          localStorage.setItem('userProfile', JSON.stringify(profileData))
+
+          // 2. CORRECTION POUR LA BARRE DE NAVIGATION :
+          // On utilise la clé exacte attendue par scripts/global.js en lui passant directement le prénom
+          localStorage.setItem('qa_user_logged', firstnameValue)
+
+          alert('Profil et adresse enregistrés avec succès !')
+
+          // Redirection vers le catalogue
+          window.location.href = 'products.html'
+        })
+      })
+    </script>
+  </body>
+</html>

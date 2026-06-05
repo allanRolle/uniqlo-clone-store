@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIQLO Style - Détail Produit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      .uniqlo-red {
+        background-color: #ff0000;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <div id="global-header"></div>
+
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-white border border-gray-100 p-6 shadow-sm mb-12"
+      >
+        <div
+          class="bg-gray-50 h-96 flex items-center justify-center overflow-hidden rounded-sm border border-gray-100"
+        >
+          <img
+            id="detail-img"
+            src=""
+            alt="Produit"
+            class="object-cover h-full w-full"
+          />
+        </div>
+
+        <div class="space-y-4">
+          <h1
+            id="detail-name"
+            class="text-2xl font-black tracking-tight uppercase text-gray-900"
+          >
+            Chargement...
+          </h1>
+          <p
+            id="detail-category"
+            class="text-xs font-medium tracking-wide uppercase text-gray-400"
+          ></p>
+
+          <div class="flex items-center text-xs text-yellow-400 gap-0.5">
+            <i class="fa fa-star"></i><i class="fa fa-star"></i
+            ><i class="fa fa-star"></i><i class="fa fa-star"></i
+            ><i class="fa fa-star-half-alt"></i>
+            <span class="text-gray-400 ml-2 font-medium">(4.5)</span>
+          </div>
+
+          <div id="detail-price" class="text-3xl font-black text-red-600 pt-2">
+            0.00 €
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <div>
+              <label
+                for="product-color"
+                class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1"
+              >
+                Couleur
+              </label>
+              <select
+                id="product-color"
+                class="w-full max-w-xs h-11 border border-gray-300 text-xs font-bold uppercase tracking-wider px-3 focus:outline-none focus:border-black rounded-sm bg-white cursor-pointer"
+              >
+                <option value="Noir" selected>Noir</option>
+                <option value="Bleu">Bleu</option>
+                <option value="Gris">Gris</option>
+                <option value="Blanc">Blanc</option>
+                <option value="Rouge">Rouge</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="product-size"
+                class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1"
+              >
+                Taille
+              </label>
+              <select
+                id="product-size"
+                class="w-full max-w-xs h-11 border border-gray-300 text-xs font-bold uppercase tracking-wider px-3 focus:outline-none focus:border-black rounded-sm bg-white cursor-pointer"
+              >
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-row flex-wrap items-center gap-4 py-4 border-t border-b border-gray-100 my-4"
+          >
+            <label
+              for="quantity"
+              class="text-xs font-black uppercase tracking-wider text-gray-700 whitespace-nowrap"
+            >
+              Quantité :
+            </label>
+
+            <input
+              type="number"
+              id="quantity"
+              value="1"
+              min="1"
+              max="50"
+              oninput="
+                validity.valid || (value = value.replace(/\D/g, ''))
+                if (Number(value) > 50) value = 50
+                if (Number(value) < 1 && value != '') value = 1
+              "
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              class="w-20 h-11 border border-gray-300 text-sm text-center font-bold focus:outline-none focus:border-black pl-2"
+            />
+
+            <button
+              id="add-to-cart-btn"
+              class="bg-black text-white text-xs font-bold uppercase tracking-widest px-6 h-11 hover:bg-red-600 transition flex items-center gap-2 rounded-sm"
+            >
+              <i class="fa fa-shopping-cart"></i> Ajouter au panier
+            </button>
+          </div>
+
+          <div class="text-xs space-y-2 pt-2">
+            <p class="text-gray-600">
+              <span
+                class="font-bold text-gray-900 uppercase tracking-wider inline-block w-28"
+                >Disponibilité :</span
+              >
+              <span class="text-green-600 font-bold" id="detail-avail"
+                >En Stock</span
+              >
+            </p>
+            <p class="text-gray-600">
+              <span
+                class="font-bold text-gray-900 uppercase tracking-wider inline-block w-28"
+                >Condition :</span
+              >
+              <span class="font-medium" id="detail-condition">Neuf</span>
+            </p>
+            <p class="text-gray-600">
+              <span
+                class="font-bold text-gray-900 uppercase tracking-wider inline-block w-28"
+                >Marque :</span
+              >
+              <span class="font-medium uppercase" id="detail-brand"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-gray-200">
+        <div
+          class="bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-3 inline-block"
+        >
+          Écrire un avis
+        </div>
+        <form
+          id="review-form"
+          onsubmit="submitReview(event)"
+          class="p-6 bg-gray-50/50 space-y-4 border-t border-gray-200"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input
+              type="text"
+              id="review-name"
+              placeholder="Votre nom"
+              required
+              class="w-full bg-white border border-gray-300 p-3 text-xs focus:outline-none focus:border-black rounded-sm"
+            />
+            <input
+              type="email"
+              id="review-email"
+              placeholder="Adresse email"
+              required
+              class="w-full bg-white border border-gray-300 p-3 text-xs focus:outline-none focus:border-black rounded-sm"
+            />
+          </div>
+          <textarea
+            id="review-msg"
+            rows="4"
+            placeholder="Ajoutez votre avis ici..."
+            required
+            class="w-full bg-white border border-gray-300 p-3 text-xs focus:outline-none focus:border-black rounded-sm"
+          ></textarea>
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              class="bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-3 hover:bg-red-600 transition rounded-sm"
+            >
+              Soumettre
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <div
+      id="cart-modal"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white p-8 max-w-sm w-full mx-4 text-center shadow-lg border border-gray-100"
+      >
+        <div
+          class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"
+        >
+          <i class="fa fa-check"></i>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-1">Article ajouté !</h3>
+        <p class="text-xs text-gray-500 mb-6">
+          Le produit a bien rejoint votre panier d'achat.
+        </p>
+        <div class="flex flex-col gap-2">
+          <a
+            href="cart.html"
+            class="bg-black text-white text-xs font-bold py-3 uppercase tracking-wider hover:bg-gray-800 transition block"
+            >Voir le panier</a
+          >
+          <button
+            onclick="closeModal()"
+            class="border border-gray-300 text-gray-700 text-xs font-bold py-3 uppercase tracking-wider hover:bg-gray-50 transition"
+          >
+            Continuer mes achats
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="global.js"></script>
+    <script>
+      // On déclare la variable au niveau global du script
+      let currentProductId = null
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Sécurité si products n'a pas pu être chargé depuis scripts/global.js
+        if (typeof products === 'undefined') {
+          document.getElementById('detail-name').innerText =
+            'Erreur : Catalogue introuvable'
+          return
+        }
+
+        const params = new URLSearchParams(window.location.search)
+        const idParam = params.get('id')
+
+        // On convertit l'ID de l'URL en entier pour correspondre au type de scripts/global.js (ex: id: 1)
+        currentProductId = parseInt(idParam, 10)
+
+        // Recherche du produit correspondant à l'ID
+        const product = products.find((p) => p.id === currentProductId)
+
+        if (!product) {
+          document.getElementById('detail-name').innerText =
+            'Produit introuvable'
+          return
+        }
+
+        // Remplissage dynamique de la fiche produit
+        document.getElementById('detail-name').innerText = product.name
+        document.getElementById('detail-category').innerText =
+          `Catégorie : ${product.category} > ${product.subcategory}`
+        document.getElementById('detail-price').innerText =
+          `${product.price.toFixed(2)} €`
+        document.getElementById('detail-brand').innerText = product.brand
+        document.getElementById('detail-img').src = product.img
+        document.getElementById('detail-img').alt = product.name
+
+        // Configuration de l'écouteur pour l'ajout au panier
+        const addBtn = document.getElementById('add-to-cart-btn')
+        if (addBtn) {
+          // On supprime d'anciens écouteurs pour éviter les doublons de clics
+          const newAddBtn = addBtn.cloneNode(true)
+          addBtn.parentNode.replaceChild(newAddBtn, addBtn)
+
+          newAddBtn.addEventListener('click', () => {
+            const qty =
+              parseInt(document.getElementById('quantity').value, 10) || 1
+            const size = document.getElementById('product-size').value
+            const color = document.getElementById('product-color').value
+
+            // On passe explicitement le currentProductId validé
+            if (currentProductId && typeof addToCartWithSpecs === 'function') {
+              addToCartWithSpecs(currentProductId, qty, size, color)
+
+              // Optionnel : Ouvre la modale de succès définie dans ta page
+              if (typeof openModal === 'function') {
+                openModal()
+              }
+            } else {
+              alert("Erreur lors de l'ajout : ID produit non valide.")
+            }
+          })
+        }
+      })
+
+      function submitReview(e) {
+        e.preventDefault()
+        alert('Merci ! Votre avis a été soumis avec succès.')
+        document.getElementById('review-form').reset()
+      }
+
+      function openModal() {
+        document.getElementById('cart-modal')?.classList.remove('hidden')
+      }
+      function closeModal() {
+        document.getElementById('cart-modal')?.classList.add('hidden')
+      }
+    </script>
+  </body>
+</html>

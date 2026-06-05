@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIQLO Style - Commande & Paiement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Script requis pour générer le document PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased">
+    <!-- En-tête global -->
+    <div id="global-header"></div>
+
+    <main class="container mx-auto px-4 py-12 max-w-5xl">
+      <h1
+        class="text-xl font-black tracking-widest uppercase mb-8 pb-4 border-b border-gray-200"
+      >
+        Finaliser ma commande
+      </h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- COLONNE GAUCHE & CENTRE : INFOS CLIENT & PAIEMENT -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- 1. ADRESSE DE LIVRAISON -->
+          <div class="bg-white p-6 border border-gray-200 rounded-sm shadow-sm">
+            <div
+              class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2"
+            >
+              <h2
+                class="text-xs font-black uppercase tracking-wider flex items-center gap-2"
+              >
+                <i class="fa-solid fa-truck text-gray-400"></i> 1. Adresse de
+                livraison
+              </h2>
+              <a
+                href="account-information.html"
+                class="text-[11px] font-bold text-gray-400 hover:text-black uppercase tracking-wide underline"
+              >
+                Modifier
+              </a>
+            </div>
+            <div
+              id="delivery-address-display"
+              class="text-xs text-gray-700 space-y-1 leading-relaxed"
+            >
+              <p class="text-gray-400 italic">Chargement des coordonnées...</p>
+            </div>
+          </div>
+
+          <!-- 2. MODE DE PAIEMENT AVEC VALIDATIONS STRICTES -->
+          <div class="bg-white p-6 border border-gray-200 rounded-sm shadow-sm">
+            <h2
+              class="text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-100 pb-2 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-credit-card text-gray-400"></i> 2. Mode de
+              paiement
+            </h2>
+
+            <form id="payment-form" class="space-y-4">
+              <!-- Numéro de carte -->
+              <div>
+                <label
+                  class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                  >Numéro de carte (16 chiffres)</label
+                >
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="card-number"
+                    pattern="[0-9]{16}"
+                    maxlength="16"
+                    placeholder="4111222233334444"
+                    required
+                    title="Le numéro de carte doit contenir exactement 16 chiffres, sans espace ni lettre."
+                    class="w-full text-xs border border-gray-300 p-2.5 pl-9 focus:border-black outline-none rounded-sm"
+                  />
+                  <i
+                    class="fa-solid fa-credit-card absolute left-3 top-3.5 text-gray-400 text-xs"
+                  ></i>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <!-- Expiration -->
+                <div>
+                  <label
+                    class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                    >Expiration (MM/AA)</label
+                  >
+                  <input
+                    type="text"
+                    id="card-expiry"
+                    pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                    maxlength="5"
+                    placeholder="12/28"
+                    required
+                    title="Format valide requis : MM/AA (Exemple : 04/27)"
+                    class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+                  />
+                </div>
+                <!-- CVC -->
+                <div>
+                  <label
+                    class="block text-[11px] font-black uppercase tracking-wider mb-1"
+                    >Code CVC (3 chiffres)</label
+                  >
+                  <input
+                    type="text"
+                    id="card-cvc"
+                    pattern="[0-9]{3}"
+                    maxlength="3"
+                    placeholder="123"
+                    required
+                    title="Le code de sécurité doit contenir exactement 3 chiffres."
+                    class="w-full text-xs border border-gray-300 p-2.5 focus:border-black outline-none rounded-sm"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-black text-white text-xs font-black uppercase tracking-widest py-3 hover:bg-red-600 transition duration-300 mt-6 shadow-sm"
+              >
+                Confirmer et régler la commande
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE : RÉCAPITULATIF DU PANIER & BOUTONS -->
+        <div class="lg:col-span-1">
+          <div class="bg-white p-6 border border-gray-200 rounded-sm shadow-sm">
+            <h2
+              class="text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-100 pb-2"
+            >
+              Récapitulatif
+            </h2>
+
+            <div id="checkout-items-list" class="space-y-4">
+              <p class="text-xs text-gray-400 italic">
+                Chargement du panier...
+              </p>
+            </div>
+            <div
+              id="coupon-section"
+              class="mt-6 border-t pt-6"
+              style="display: none"
+            >
+              <label
+                class="text-[10px] font-bold uppercase text-gray-500 mb-2 block"
+                >Code de réduction</label
+              >
+
+              <div id="coupon-input-area" class="flex gap-2">
+                <input
+                  type="text"
+                  id="coupon-code"
+                  placeholder="UNIQLO10"
+                  class="flex-1 border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-black"
+                />
+                <button
+                  id="apply-coupon-btn"
+                  class="bg-black text-white px-4 py-2 text-[10px] font-bold uppercase hover:bg-gray-800 transition"
+                >
+                  Appliquer
+                </button>
+              </div>
+
+              <div
+                id="coupon-success-area"
+                class="hidden flex items-center justify-between bg-green-50 p-2 border border-green-200"
+              >
+                <span class="text-xs font-bold text-green-700"
+                  >✓ Code UNIQLO10 appliqué (-10%)</span
+                >
+                <button
+                  id="remove-coupon-btn"
+                  class="text-[10px] font-bold text-red-600 underline uppercase"
+                >
+                  Retirer
+                </button>
+              </div>
+
+              <div id="coupon-message" class="text-xs font-bold mt-2"></div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-gray-200 space-y-2 text-xs">
+              <div class="flex justify-between">
+                <span>Sous-total</span>
+                <span id="checkout-subtotal" class="font-bold">0.00 €</span>
+              </div>
+              <div
+                class="flex justify-between text-base font-black border-t pt-2 mt-2"
+              >
+                <span>Total</span>
+                <span id="checkout-total">0.00 €</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="global.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. ÉLÉMENTS DOM ---
+        const couponInputArea = document.getElementById('coupon-input-area')
+        const successArea = document.getElementById('coupon-success-area')
+        const applyBtn = document.getElementById('apply-coupon-btn')
+        const removeBtn = document.getElementById('remove-coupon-btn')
+        const couponInput = document.getElementById('coupon-code')
+        const messageEl = document.getElementById('coupon-message')
+
+        // --- 2. PROFIL UTILISATEUR ---
+        const userProfileRaw = localStorage.getItem('userProfile')
+        const user = userProfileRaw ? JSON.parse(userProfileRaw) : null
+        const addressEl = document.getElementById('delivery-address-display')
+
+        if (user && addressEl) {
+          addressEl.innerHTML = `
+        <p class="font-bold">${user.firstname || ''} ${user.lastname || ''}</p>
+        <p>${user.address || ''}</p>
+        <p>${user.zipcode || ''} ${user.city || ''}</p>
+      `
+        }
+
+        // --- 3. GESTION DU COUPON (VISUEL & LOGIQUE) ---
+        document.getElementById('coupon-section').style.display = 'block'
+
+        // État initial du coupon
+        if (localStorage.getItem('discount') === '0.10') {
+          if (couponInputArea) couponInputArea.classList.add('hidden')
+          if (successArea) successArea.classList.remove('hidden')
+        }
+
+        // Bouton Appliquer
+        if (applyBtn) {
+          applyBtn.addEventListener('click', () => {
+            const code = couponInput.value.trim().toUpperCase()
+            if (code === 'UNIQLO10') {
+              localStorage.setItem('discount', '0.10')
+              location.reload()
+            } else {
+              messageEl.innerText = 'Code invalide.'
+              messageEl.className = 'text-xs font-bold mt-2 text-red-600'
+            }
+          })
+        }
+
+        // Bouton Retirer
+        if (removeBtn) {
+          removeBtn.addEventListener('click', () => {
+            localStorage.removeItem('discount')
+            location.reload()
+          })
+        }
+
+        // --- 4. CALCUL DU PANIER ---
+        const cart = JSON.parse(localStorage.getItem('uniqlo_cart')) || []
+        const discount = parseFloat(localStorage.getItem('discount')) || 0
+        const listEl = document.getElementById('checkout-items-list')
+        const subtotalEl = document.getElementById('checkout-subtotal')
+        const totalEl = document.getElementById('checkout-total')
+
+        if (listEl && cart.length > 0) {
+          let subtotal = 0
+          listEl.innerHTML = cart
+            .map((item) => {
+              const p =
+                typeof products !== 'undefined'
+                  ? products.find((prod) => prod.id == item.id)
+                  : null
+              if (!p) return ''
+              subtotal += p.price * item.qty
+              return `
+          <div class="flex justify-between items-center py-2 border-b border-gray-100">
+            <div><p class="text-[10px] font-bold uppercase">${p.name}</p></div>
+            <span class="text-xs font-bold">${(p.price * item.qty).toFixed(2)} €</span>
+          </div>
+        `
+            })
+            .join('')
+
+          subtotalEl.innerText = subtotal.toFixed(2) + ' €'
+
+          const finalTotal = subtotal * (1 - discount)
+          // Affichage du total avec effet visuel si remise
+          if (discount > 0) {
+            totalEl.innerHTML = `<span class="text-gray-400 line-through mr-2">${subtotal.toFixed(2)} €</span> 
+                               <span class="text-red-600 font-bold">${finalTotal.toFixed(2)} €</span>`
+          } else {
+            totalEl.innerText = subtotal.toFixed(2) + ' €'
+          }
+        }
+
+        // 5. Gestion de la confirmation de commande
+        const paymentForm = document.getElementById('payment-form')
+
+        if (paymentForm) {
+          paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const cart = JSON.parse(localStorage.getItem('uniqlo_cart')) || []
+            const user = JSON.parse(localStorage.getItem('userProfile'))
+            const discount = parseFloat(localStorage.getItem('discount')) || 0
+
+            // Calcul du total
+            let subtotal = 0
+            cart.forEach((item) => {
+              const p =
+                typeof products !== 'undefined'
+                  ? products.find((prod) => prod.id == item.id)
+                  : null
+              if (p) subtotal += p.price * item.qty
+            })
+
+            // Remplacez la création de 'newOrder' dans src/checkout.html par ceci :
+            const newOrder = {
+              orderId: 'UNIQ-' + Date.now(),
+              date: new Date().toLocaleDateString(),
+              items: cart.map((item) => ({
+                product: products.find((p) => p.id == item.id),
+                qty: item.qty,
+              })),
+              total: subtotal * (1 - discount),
+              couponUsed: discount > 0 ? 'UNIQLO10' : 'Aucun',
+              profile: JSON.parse(localStorage.getItem('userProfile')), // <--- C'est ici que l'adresse est stockée
+            }
+
+            // Enregistrement dans l'historique
+            const history =
+              JSON.parse(localStorage.getItem('uniqlo_orders_history')) || []
+            history.push(newOrder)
+            localStorage.setItem(
+              'uniqlo_orders_history',
+              JSON.stringify(history)
+            )
+
+            // Vider le panier
+            localStorage.removeItem('uniqlo_cart')
+            localStorage.removeItem('discount')
+
+            window.location.href = 'orders-history.html'
+          })
+        }
+      })
+    </script>
+  </body>
+</html>
