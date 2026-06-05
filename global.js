@@ -300,36 +300,56 @@ function authenticateUser(email, password) {
 // GESTION DYNAMIQUE DE L'AUTHENTIFICATION VISUELLE
 // ==========================================
 
+// scripts/global.js
+
+// scripts/global.js
+
+/**
+ * Met à jour la barre de navigation selon l'état de connexion
+ */
 function updateNavbarAuth() {
-  const navAuth = document.getElementById('nav-auth')
-  const userStatus = document.getElementById('user-status')
-  const navLogout = document.getElementById('nav-logout')
+  const authContainer = document.getElementById('auth-container')
+  const userName = localStorage.getItem('user_name') // On récupère le nom stocké à la connexion
 
-  // Récupération du jeton de session dans le localStorage
-  const loggedUser = localStorage.getItem('qa_user_logged')
+  if (!authContainer) return
 
-  if (loggedUser) {
-    // CAS 1 : ALLAN EST CONNECTÉ
-    if (navAuth) navAuth.style.display = 'none' // On masque complètement la connexion
+  if (userName) {
+    // Utilisateur connecté
+    authContainer.innerHTML = `
+      <div class="flex items-center space-x-4">
+        <span class="text-sm font-bold text-gray-800">Bonjour, ${userName}</span>
+        <button id="logout-btn" class="text-xs font-bold uppercase hover:text-red-600 transition underline">
+          Déconnexion
+        </button>
+      </div>
+    `
 
-    if (userStatus) {
-      userStatus.innerText = `Bonjour ${loggedUser}`
-      userStatus.style.display = 'inline-block' // On force l'affichage en ligne aligné
-    }
-    if (navLogout) {
-      navLogout.style.display = 'inline-block' // On force l'affichage du bouton déconnexion
-    }
+    // Attacher l'événement au bouton de déconnexion
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('user_name') // Supprime la session
+      window.location.reload() // Recharge la page pour réinitialiser l'affichage
+    })
   } else {
-    // CAS 2 : PERSONNE N'EST CONNECTÉ
-    if (navAuth) navAuth.style.display = 'inline-block' // On réaffiche la connexion
+    // Utilisateur non connecté
+    authContainer.innerHTML = `
+      <a href="signup.html" class="text-xs font-bold uppercase hover:text-red-600 transition">
+        Connexion / Inscription
+      </a>
+    `
+  }
+}
 
-    if (userStatus) {
-      userStatus.innerText = ''
-      userStatus.style.display = 'none' // On masque le message de bienvenue
-    }
-    if (navLogout) {
-      navLogout.style.display = 'none' // On masque la déconnexion
-    }
+// Assurez-vous d'appeler cette fonction dans votre fonction initApp() existante
+function initApp() {
+  injectGlobalHeader() // Votre fonction existante qui crée le DOM du header
+  updateNavbarAuth() // On met à jour l'affichage de l'authentification
+
+  // ... reste de votre code (panier, etc.)
+  const storedCart = JSON.parse(localStorage.getItem('uniqlo_cart')) || []
+  const cartCountEl = document.getElementById('cart-count')
+  if (cartCountEl) {
+    const totalItems = storedCart.reduce((sum, item) => sum + item.qty, 0)
+    cartCountEl.innerText = totalItems
   }
 }
 
