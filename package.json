@@ -1,0 +1,25 @@
+{
+  "name": "uniqlo-clone-store",
+  "version": "1.0.0",
+  "description": "uniqlo clone store for demo project",
+  "keywords": [
+    "qa",
+    "testing",
+    "demo"
+  ],
+  "homepage": "https://github.com/allanRolle/uniqlo-clone-store#readme",
+  "bugs": {
+    "url": "https://github.com/allanRolle/uniqlo-clone-store/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allanRolle/uniqlo-clone-store.git"
+  },
+  "license": "ISC",
+  "author": "Allan Rolle",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000"
+  }
+}

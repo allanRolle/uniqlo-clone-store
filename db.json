@@ -1,0 +1,456 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Blue Top Elegant",
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "Polo",
+      "price": 15.0,
+      "img": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400"
+    },
+    {
+      "id": 2,
+      "name": "Men Tshirt Classic",
+      "category": "Men",
+      "subcategory": "Tshirts",
+      "brand": "H&M",
+      "price": 12.99,
+      "img": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400"
+    },
+    {
+      "id": 3,
+      "name": "Summer White Dress",
+      "category": "Kids",
+      "subcategory": "Dress",
+      "brand": "Babyhug",
+      "price": 24.5,
+      "img": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400"
+    },
+    {
+      "id": 4,
+      "name": "Leather Jacket",
+      "category": "Men",
+      "subcategory": "Jackets",
+      "brand": "Zara",
+      "price": 89.99,
+      "img": "https://images.unsplash.com/photo-1551028719-00167b16e753?w=400"
+    },
+    {
+      "id": 5,
+      "name": "Silk Blouse",
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "Mango",
+      "price": 45.0,
+      "img": "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400"
+    },
+    {
+      "id": 6,
+      "name": "Kids Denim Shorts",
+      "category": "Kids",
+      "subcategory": "Bottoms",
+      "brand": "H&M",
+      "price": 18.0,
+      "img": "https://images.unsplash.com/photo-1596767602237-013093259691?w=400"
+    },
+    {
+      "id": 7,
+      "name": "Classic Chinos",
+      "category": "Men",
+      "subcategory": "Bottoms",
+      "brand": "Gap",
+      "price": 35.99,
+      "img": "https://images.unsplash.com/photo-1624378439575-d8705ad7b802?w=400"
+    },
+    {
+      "id": 8,
+      "name": "Floral Summer Skirt",
+      "category": "Women",
+      "subcategory": "Bottoms",
+      "brand": "Polo",
+      "price": 29.99,
+      "img": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400"
+    },
+    {
+      "id": 9,
+      "name": "Hoodie Sport",
+      "category": "Men",
+      "subcategory": "Tshirts",
+      "brand": "Nike",
+      "price": 55.0,
+      "img": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"
+    },
+    {
+      "id": 10,
+      "name": "Wool Sweater",
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "Zara",
+      "price": 39.5,
+      "img": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400"
+    },
+    {
+      "id": 11,
+      "name": "Baby Onesie Blue",
+      "category": "Kids",
+      "subcategory": "Tops",
+      "brand": "Babyhug",
+      "price": 12.0,
+      "img": "https://images.unsplash.com/photo-1598346762291-aee8857219d7?w=400"
+    },
+    {
+      "id": 12,
+      "name": "Slim Fit Jeans",
+      "category": "Men",
+      "subcategory": "Bottoms",
+      "brand": "Levi's",
+      "price": 60.0,
+      "img": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"
+    },
+    {
+      "id": 13,
+      "name": "Evening Gown",
+      "category": "Women",
+      "subcategory": "Dress",
+      "brand": "Mango",
+      "price": 120.0,
+      "img": "https://images.unsplash.com/photo-1595777457583-95e059d743b3?w=400"
+    },
+    {
+      "id": 14,
+      "name": "Kids Running Shoes",
+      "category": "Kids",
+      "subcategory": "Shoes",
+      "brand": "Nike",
+      "price": 45.0,
+      "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"
+    },
+    {
+      "id": 15,
+      "name": "Formal Blazer",
+      "category": "Men",
+      "subcategory": "Jackets",
+      "brand": "Zara",
+      "price": 95.0,
+      "img": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400"
+    },
+    {
+      "id": 16,
+      "name": "Casual Cardigan",
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "H&M",
+      "price": 28.0,
+      "img": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400"
+    },
+    {
+      "id": 17,
+      "name": "Polo Shirt Navy",
+      "category": "Men",
+      "subcategory": "Tshirts",
+      "brand": "Polo",
+      "price": 40.0,
+      "img": "https://images.unsplash.com/photo-1598971822851-93e1554904f6?w=400"
+    },
+    {
+      "id": 18,
+      "name": "Striped T-Shirt",
+      "category": "Kids",
+      "subcategory": "Tshirts",
+      "brand": "H&M",
+      "price": 10.5,
+      "img": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400"
+    },
+    {
+      "id": 19,
+      "name": "Winter Coat",
+      "category": "Women",
+      "subcategory": "Jackets",
+      "brand": "Zara",
+      "price": 150.0,
+      "img": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400"
+    },
+    {
+      "id": 20,
+      "name": "Leather Belt",
+      "category": "Men",
+      "subcategory": "Accessories",
+      "brand": "Levi's",
+      "price": 25.0,
+      "img": "https://images.unsplash.com/photo-1624222240974-ce34ed173f4d?w=400"
+    },
+    {
+      "id": 21,
+      "name": "Silk Scarf",
+      "category": "Women",
+      "subcategory": "Accessories",
+      "brand": "Mango",
+      "price": 22.0,
+      "img": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400"
+    },
+    {
+      "id": 22,
+      "name": "Baby Winter Set",
+      "category": "Kids",
+      "subcategory": "Jackets",
+      "brand": "Babyhug",
+      "price": 35.0,
+      "img": "https://images.unsplash.com/photo-1555529721-711910557451?w=400"
+    },
+    {
+      "id": 23,
+      "name": "Running Shorts",
+      "category": "Men",
+      "subcategory": "Bottoms",
+      "brand": "Nike",
+      "price": 30.0,
+      "img": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400"
+    },
+    {
+      "id": 24,
+      "name": "High Heels",
+      "category": "Women",
+      "subcategory": "Shoes",
+      "brand": "Zara",
+      "price": 65.0,
+      "img": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400"
+    },
+    {
+      "id": 25,
+      "name": "Cotton T-Shirt",
+      "category": "Men",
+      "subcategory": "Tshirts",
+      "brand": "H&M",
+      "price": 9.99,
+      "img": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400"
+    },
+    {
+      "id": 26,
+      "name": "Toddler Raincoat",
+      "category": "Kids",
+      "subcategory": "Jackets",
+      "brand": "Babyhug",
+      "price": 25.0,
+      "img": "https://images.unsplash.com/photo-1502716117941-66c37107c134?w=400"
+    },
+    {
+      "id": 27,
+      "name": "Denim Jacket",
+      "category": "Women",
+      "subcategory": "Jackets",
+      "brand": "Levi's",
+      "price": 75.0,
+      "img": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"
+    },
+    {
+      "id": 28,
+      "name": "Cap Sport",
+      "category": "Men",
+      "subcategory": "Accessories",
+      "brand": "Nike",
+      "price": 20.0,
+      "img": "https://images.unsplash.com/photo-1588850561407-ed78c672e8bb?w=400"
+    },
+    {
+      "id": 29,
+      "name": "Midi Dress",
+      "category": "Women",
+      "subcategory": "Dress",
+      "brand": "Mango",
+      "price": 55.0,
+      "img": "https://images.unsplash.com/photo-1572804013427-4d7ca7268d37?w=400"
+    },
+    {
+      "id": 30,
+      "name": "Kids Pajamas",
+      "category": "Kids",
+      "subcategory": "Tops",
+      "brand": "H&M",
+      "price": 14.0,
+      "img": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=400"
+    },
+    {
+      "id": 31,
+      "name": "Formal Shoes",
+      "category": "Men",
+      "subcategory": "Shoes",
+      "brand": "Zara",
+      "price": 85.0,
+      "img": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400"
+    },
+    {
+      "id": 32,
+      "name": "Handbag Leather",
+      "category": "Women",
+      "subcategory": "Accessories",
+      "brand": "Zara",
+      "price": 110.0,
+      "img": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400"
+    },
+    {
+      "id": 33,
+      "name": "Baby Shoes Soft",
+      "category": "Kids",
+      "subcategory": "Shoes",
+      "brand": "Babyhug",
+      "price": 15.0,
+      "img": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=400"
+    },
+    {
+      "id": 34,
+      "name": "Cargo Pants",
+      "category": "Men",
+      "subcategory": "Bottoms",
+      "brand": "Gap",
+      "price": 50.0,
+      "img": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400"
+    },
+    {
+      "id": 35,
+      "name": "Sweater V-Neck",
+      "category": "Men",
+      "subcategory": "Tops",
+      "brand": "Polo",
+      "price": 45.0,
+      "img": "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=400"
+    },
+    {
+      "id": 36,
+      "name": "Tank Top",
+      "category": "Women",
+      "subcategory": "Tops",
+      "brand": "H&M",
+      "price": 8.5,
+      "img": "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=400"
+    },
+    {
+      "id": 37,
+      "name": "Kids Hat",
+      "category": "Kids",
+      "subcategory": "Accessories",
+      "brand": "Babyhug",
+      "price": 7.0,
+      "img": "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400"
+    },
+    {
+      "id": 38,
+      "name": "Office Trousers",
+      "category": "Women",
+      "subcategory": "Bottoms",
+      "brand": "Mango",
+      "price": 40.0,
+      "img": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400"
+    },
+    {
+      "id": 39,
+      "name": "Running Jacket",
+      "category": "Men",
+      "subcategory": "Jackets",
+      "brand": "Nike",
+      "price": 70.0,
+      "img": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400"
+    },
+    {
+      "id": 40,
+      "name": "Sun Glasses",
+      "category": "Women",
+      "subcategory": "Accessories",
+      "brand": "Zara",
+      "price": 35.0,
+      "img": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400"
+    },
+    {
+      "id": 41,
+      "name": "Baby Socks",
+      "category": "Kids",
+      "subcategory": "Accessories",
+      "brand": "Babyhug",
+      "price": 5.0,
+      "img": "https://images.unsplash.com/photo-1533038590840-1cde6e668a48?w=400"
+    },
+    {
+      "id": 42,
+      "name": "Graphic T-Shirt",
+      "category": "Men",
+      "subcategory": "Tshirts",
+      "brand": "H&M",
+      "price": 15.0,
+      "img": "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400"
+    },
+    {
+      "id": 43,
+      "name": "Casual Dress",
+      "category": "Women",
+      "subcategory": "Dress",
+      "brand": "H&M",
+      "price": 32.0,
+      "img": "https://images.unsplash.com/photo-1574797960309-813c9e6d0a79?w=400"
+    },
+    {
+      "id": 44,
+      "name": "Windbreaker Kids",
+      "category": "Kids",
+      "subcategory": "Jackets",
+      "brand": "Nike",
+      "price": 40.0,
+      "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400"
+    },
+    {
+      "id": 45,
+      "name": "Leather Boots",
+      "category": "Men",
+      "subcategory": "Shoes",
+      "brand": "Zara",
+      "price": 120.0,
+      "img": "https://images.unsplash.com/photo-1520639888713-78b113741a0d?w=400"
+    },
+    {
+      "id": 46,
+      "name": "Wide Leg Trousers",
+      "category": "Women",
+      "subcategory": "Bottoms",
+      "brand": "Mango",
+      "price": 48.0,
+      "img": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400"
+    },
+    {
+      "id": 47,
+      "name": "Backpack Sport",
+      "category": "Men",
+      "subcategory": "Accessories",
+      "brand": "Nike",
+      "price": 55.0,
+      "img": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"
+    },
+    {
+      "id": 48,
+      "name": "Kids School Bag",
+      "category": "Kids",
+      "subcategory": "Accessories",
+      "brand": "Polo",
+      "price": 30.0,
+      "img": "https://images.unsplash.com/photo-1580664823949-bd929000a6f4?w=400"
+    },
+    {
+      "id": 49,
+      "name": "Party Heels",
+      "category": "Women",
+      "subcategory": "Shoes",
+      "brand": "Zara",
+      "price": 75.0,
+      "img": "https://images.unsplash.com/photo-1562273138-f46be4ebdf33?w=400"
+    },
+    {
+      "id": 50,
+      "name": "Basic Polo",
+      "category": "Men",
+      "subcategory": "Tshirts",
+      "brand": "Polo",
+      "price": 35.0,
+      "img": "https://images.unsplash.com/photo-1565156434455-d36803737b98?w=400"
+    }
+  ],
+  "cart": [],
+  "orders": []
+}
