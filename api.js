@@ -5,12 +5,21 @@ const API_BASE_URL =
     ? 'http://localhost:3000'
     : 'https://uniqlo-clone-store-7.onrender.com'
 
-/**
- * Crée un nouvel utilisateur
- * @param {Object} userData - { name, email, password }
- */
 export async function registerUser(userData) {
   try {
+    // 1. Récupérer tous les utilisateurs pour vérifier l'unicité
+    const existingUsersResponse = await fetch(`${API_BASE_URL}/users`)
+    const users = await existingUsersResponse.json()
+
+    // 2. Vérifier si l'email existe déjà
+    const userExists = users.find((user) => user.email === userData.email)
+
+    if (userExists) {
+      alert('Cet email est déjà utilisé par un autre compte.')
+      return null
+    }
+
+    // 3. Si l'email est libre, on procède à l'inscription
     const response = await fetch(`${API_BASE_URL}/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

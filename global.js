@@ -1,138 +1,3 @@
-// Base de données élargie - Prix en Euros (€)
-const products = [
-  // --- CATEGORIE: WOMEN ---
-  {
-    id: 1,
-    name: 'Blue Top Elegant',
-    category: 'Women',
-    subcategory: 'Tops',
-    brand: 'Polo',
-    price: 15.0,
-    img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400',
-  },
-  {
-    id: 3,
-    name: 'Sleeveless Dress Summer',
-    category: 'Women',
-    subcategory: 'Dress',
-    brand: 'Zara',
-    price: 45.0,
-    img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400',
-  },
-  {
-    id: 4,
-    name: 'Stylish Evening Dress',
-    category: 'Women',
-    subcategory: 'Dress',
-    brand: 'Madame',
-    price: 89.99,
-    img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400',
-  },
-  {
-    id: 5,
-    name: 'Winter Warm Top',
-    category: 'Women',
-    subcategory: 'Tops',
-    brand: 'Mast & Harbour',
-    price: 32.5,
-    img: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=400',
-  },
-  {
-    id: 8,
-    name: 'Fancy Green Dress',
-    category: 'Women',
-    subcategory: 'Dress',
-    brand: 'Zara',
-    price: 59.9,
-    img: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400',
-  },
-  {
-    id: 9,
-    name: 'Casual Black Top',
-    category: 'Women',
-    subcategory: 'Tops',
-    brand: 'H&M',
-    price: 19.99,
-    img: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400',
-  },
-
-  // --- CATEGORIE: MEN ---
-  {
-    id: 2,
-    name: 'Men Tshirt Classic',
-    category: 'Men',
-    subcategory: 'Tshirts',
-    brand: 'H&M',
-    price: 12.99,
-    img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400',
-  },
-  {
-    id: 7,
-    name: 'Premium Polo Jacket',
-    category: 'Men',
-    subcategory: 'Tshirts',
-    brand: 'Polo',
-    price: 75.0,
-    img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400',
-  },
-  {
-    id: 10,
-    name: 'Slim Fit Blue Jeans',
-    category: 'Men',
-    subcategory: 'Jeans',
-    brand: 'Mast & Harbour',
-    price: 42.0,
-    img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400',
-  },
-  {
-    id: 11,
-    name: 'Casual White Shirt',
-    category: 'Men',
-    subcategory: 'Tshirts',
-    brand: 'Zara',
-    price: 29.99,
-    img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400',
-  },
-  {
-    id: 12,
-    name: 'Dark Denim Jeans',
-    category: 'Men',
-    subcategory: 'Jeans',
-    brand: 'Polo',
-    price: 65.0,
-    img: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400',
-  },
-
-  // --- CATEGORIE: KIDS ---
-  {
-    id: 6,
-    name: 'Summer White Dress',
-    category: 'Kids',
-    subcategory: 'Dress',
-    brand: 'Babyhug',
-    price: 24.5,
-    img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400',
-  },
-  {
-    id: 13,
-    name: 'Kids Denim Overalls',
-    category: 'Kids',
-    subcategory: 'Dress',
-    brand: 'Babyhug',
-    price: 34.99,
-    img: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=400',
-  },
-  {
-    id: 14,
-    name: 'Cotton Printed Tshirt',
-    category: 'Kids',
-    subcategory: 'Tshirts',
-    brand: 'H&M',
-    price: 9.99,
-    img: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=400',
-  },
-]
-
 // Gestion de la Session et du Panier
 // DANS src/cart.html, remplace l'initialisation par celle-ci :
 // Remplace ton ancienne déclaration par celle-ci :
@@ -483,33 +348,46 @@ function injectGlobalHeader() {
 // ==========================================
 // MISE À JOUR DYNAMIQUE DE L'AUTHENTIFICATION (PC + MOBILE)
 // ==========================================
+/**
+ * Fonction globale pour gérer la déconnexion
+ */
+window.logoutUser = function () {
+  localStorage.removeItem('qa_user_logged')
+  localStorage.removeItem('user_name') // Nettoyage de sécurité si vous utilisez les deux clés
+  window.location.href = 'index.html' // Redirection vers l'accueil
+}
+
 function updateNavbarAuth() {
   const isUserLogged = localStorage.getItem('qa_user_logged')
 
-  // Éléments du menu ordinateur / barre principale
+  // Éléments du menu ordinateur
   const loginLinkEl = document.getElementById('nav-login-link')
 
-  // Éléments du menu mobile (tiroir)
+  // Éléments du menu mobile
   const mobileAuthStatus = document.getElementById('mobile-auth-status')
   const mobileLogoutContainer = document.getElementById(
     'mobile-logout-container'
   )
 
   if (isUserLogged) {
-    // ---- MODIFICATIONS LOGIQUE BARRE PRINCIPALE (PC) ----
+    // ---- PC ----
     if (loginLinkEl) {
       loginLinkEl.innerHTML = `
         <span class="text-gray-900 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1 ml-4">
           <i class="fa-solid fa-user text-sm"></i> 
           <span class="hidden md:inline">Hello, ${isUserLogged}</span>
         </span>
-        <a href="orders-history.html" class="hidden md:inline ml-3 text-[9px] text-gray-500 hover:text-black hover:underline normal-case font-medium"><i class="fa-solid fa-box text-[8px]"></i> Mes commandes</a>
-        <button onclick="logoutUser()" class="hidden md:inline ml-2 text-[9px] text-red-500 hover:underline normal-case font-normal">(Déconnexion)</button>
+        <a href="orders-history.html" class="hidden md:inline ml-3 text-[9px] text-gray-500 hover:text-black hover:underline normal-case font-medium">
+          <i class="fa-solid fa-box text-[8px]"></i> Mes commandes
+        </a>
+        <button type="button" onclick="logoutUser()" class="hidden md:inline ml-2 text-[9px] text-red-500 hover:underline normal-case font-normal">
+          (Déconnexion)
+        </button>
       `
       loginLinkEl.href = 'account-information.html'
     }
 
-    // ---- MODIFICATIONS LOGIQUE TIROIR MOBILE (VOTRE CODE INTÉGRÉ) ----
+    // ---- MOBILE ----
     if (mobileAuthStatus) {
       mobileAuthStatus.innerHTML = `
         <div class="flex items-center gap-2 text-gray-900">
@@ -522,11 +400,9 @@ function updateNavbarAuth() {
         </div>
       `
     }
-    if (mobileLogoutContainer) {
-      mobileLogoutContainer.classList.remove('hidden')
-    }
+    if (mobileLogoutContainer) mobileLogoutContainer.classList.remove('hidden')
   } else {
-    // ---- ÉTAT PAR DÉFAUT (NON CONNECTÉ) ----
+    // ---- ÉTAT DÉCONNECTÉ ----
     if (loginLinkEl) {
       loginLinkEl.className =
         'hover:text-red-600 transition flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider ml-4'
@@ -541,9 +417,7 @@ function updateNavbarAuth() {
         </a>
       `
     }
-    if (mobileLogoutContainer) {
-      mobileLogoutContainer.classList.add('hidden')
-    }
+    if (mobileLogoutContainer) mobileLogoutContainer.classList.add('hidden')
   }
 }
 

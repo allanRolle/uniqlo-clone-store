@@ -153,35 +153,31 @@
     </footer>
 
     <script src="global.js"></script>
-    <script>
+    <script type="module">
+      import { getProducts } from './api.js'
+      let products = []
       let selectedBrand = null
       let baseProducts = []
 
       // 2. Fonction de filtrage appelée dès que possible
-      function initProductsPage() {
-        if (typeof products === 'undefined') {
-          setTimeout(initProductsPage, 100)
-          return
-        }
+      async function initProductsPage() {
+        // 1. Appel de l'API
+        products = await getProducts()
 
+        // 2. Logique de filtrage (copiée de votre code)
         const params = new URLSearchParams(window.location.search)
         const catParam = params.get('cat')
 
-        // On filtre la liste totale
         let filtered = [...products]
 
         if (catParam) {
-          filtered = products.filter((p) => {
-            const cat = p.category ? p.category.toLowerCase() : ''
-            return (
-              cat.includes(catParam.toLowerCase()) ||
-              catParam.toLowerCase().includes(cat)
-            )
-          })
-
-          const titleEl = document.getElementById('products-page-title')
-          if (titleEl)
-            titleEl.innerText = `CATÉGORIE : ${catParam.toUpperCase()}`
+          const catMapping = { homme: 'Men', femme: 'Women', enfant: 'Kids' }
+          const searchCat = catMapping[catParam.toLowerCase()] || catParam
+          filtered = filtered.filter(
+            (p) =>
+              p.category &&
+              p.category.toLowerCase().includes(searchCat.toLowerCase())
+          )
         }
 
         // On met à jour la variable globale qui sert au rendu
