@@ -7,7 +7,7 @@
       "subcategory": "Tops",
       "brand": "Polo",
       "price": 15.0,
-      "img": "https://picsum.photos/400?random=1"
+      "img": "https://source.unsplash.com/400x400/?woman,top"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "subcategory": "Tshirts",
       "brand": "H&M",
       "price": 12.99,
-      "img": "https://picsum.photos/400?random=2"
+      "img": "https://source.unsplash.com/400x400/?man,tshirt"
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "subcategory": "Dress",
       "brand": "Babyhug",
       "price": 24.5,
-      "img": "https://picsum.photos/400?random=3"
+      "img": "https://source.unsplash.com/400x400/?kids,dress"
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "subcategory": "Jackets",
       "brand": "Zara",
       "price": 89.99,
-      "img": "https://picsum.photos/400?random=4"
+      "img": "https://source.unsplash.com/400x400/?man,jacket"
     },
     {
       "id": 5,
@@ -43,7 +43,7 @@
       "subcategory": "Tops",
       "brand": "Mango",
       "price": 45.0,
-      "img": "https://picsum.photos/400?random=5"
+      "img": "https://source.unsplash.com/400x400/?woman,blouse"
     },
     {
       "id": 6,
@@ -52,7 +52,7 @@
       "subcategory": "Bottoms",
       "brand": "H&M",
       "price": 18.0,
-      "img": "https://picsum.photos/400?random=6"
+      "img": "https://source.unsplash.com/400x400/?kids,shorts"
     },
     {
       "id": 7,
@@ -61,7 +61,7 @@
       "subcategory": "Bottoms",
       "brand": "Gap",
       "price": 35.99,
-      "img": "https://picsum.photos/400?random=7"
+      "img": "https://source.unsplash.com/400x400/?man,chinos"
     },
     {
       "id": 8,
@@ -70,7 +70,7 @@
       "subcategory": "Bottoms",
       "brand": "Polo",
       "price": 29.99,
-      "img": "https://picsum.photos/400?random=8"
+      "img": "https://source.unsplash.com/400x400/?woman,skirt"
     },
     {
       "id": 9,
@@ -79,7 +79,7 @@
       "subcategory": "Tshirts",
       "brand": "Nike",
       "price": 55.0,
-      "img": "https://picsum.photos/400?random=9"
+      "img": "https://source.unsplash.com/400x400/?man,hoodie"
     },
     {
       "id": 10,
@@ -88,7 +88,7 @@
       "subcategory": "Tops",
       "brand": "Zara",
       "price": 39.5,
-      "img": "https://picsum.photos/400?random=10"
+      "img": "https://source.unsplash.com/400x400/?woman,sweater"
     },
     {
       "id": 11,
@@ -97,7 +97,7 @@
       "subcategory": "Tops",
       "brand": "Babyhug",
       "price": 12.0,
-      "img": "https://picsum.photos/400?random=11"
+      "img": "https://source.unsplash.com/400x400/?baby,onesie"
     },
     {
       "id": 12,
@@ -106,7 +106,7 @@
       "subcategory": "Bottoms",
       "brand": "Levi's",
       "price": 60.0,
-      "img": "https://picsum.photos/400?random=12"
+      "img": "https://source.unsplash.com/400x400/?man,jeans"
     },
     {
       "id": 13,
@@ -115,7 +115,7 @@
       "subcategory": "Dress",
       "brand": "Mango",
       "price": 120.0,
-      "img": "https://picsum.photos/400?random=13"
+      "img": "https://source.unsplash.com/400x400/?woman,gown"
     },
     {
       "id": 14,
@@ -124,7 +124,7 @@
       "subcategory": "Shoes",
       "brand": "Nike",
       "price": 45.0,
-      "img": "https://picsum.photos/400?random=14"
+      "img": "https://source.unsplash.com/400x400/?kids,shoes"
     },
     {
       "id": 15,
@@ -133,7 +133,7 @@
       "subcategory": "Jackets",
       "brand": "Zara",
       "price": 95.0,
-      "img": "https://picsum.photos/400?random=15"
+      "img": "https://source.unsplash.com/400x400/?man,blazer"
     },
     {
       "id": 16,
@@ -142,7 +142,7 @@
       "subcategory": "Tops",
       "brand": "H&M",
       "price": 28.0,
-      "img": "https://picsum.photos/400?random=16"
+      "img": "https://source.unsplash.com/400x400/?woman,cardigan"
     },
     {
       "id": 17,
@@ -151,7 +151,7 @@
       "subcategory": "Tshirts",
       "brand": "Polo",
       "price": 40.0,
-      "img": "https://picsum.photos/400?random=17"
+      "img": "https://source.unsplash.com/400x400/?man,polo"
     },
     {
       "id": 18,
@@ -160,7 +160,7 @@
       "subcategory": "Tshirts",
       "brand": "H&M",
       "price": 10.5,
-      "img": "https://picsum.photos/400?random=18"
+      "img": "https://source.unsplash.com/400x400/?kids,tshirt"
     },
     {
       "id": 19,
@@ -169,7 +169,7 @@
       "subcategory": "Jackets",
       "brand": "Zara",
       "price": 150.0,
-      "img": "https://picsum.photos/400?random=19"
+      "img": "https://source.unsplash.com/400x400/?woman,coat"
     },
     {
       "id": 20,
@@ -178,7 +178,7 @@
       "subcategory": "Accessories",
       "brand": "Levi's",
       "price": 25.0,
-      "img": "https://picsum.photos/400?random=20"
+      "img": "https://source.unsplash.com/400x400/?man,belt"
     },
     {
       "id": 21,
@@ -187,7 +187,7 @@
       "subcategory": "Accessories",
       "brand": "Mango",
       "price": 22.0,
-      "img": "https://picsum.photos/400?random=21"
+      "img": "https://source.unsplash.com/400x400/?woman,scarf"
     },
     {
       "id": 22,
@@ -196,7 +196,7 @@
       "subcategory": "Jackets",
       "brand": "Babyhug",
       "price": 35.0,
-      "img": "https://picsum.photos/400?random=22"
+      "img": "https://source.unsplash.com/400x400/?kids,winter"
     },
     {
       "id": 23,
@@ -205,7 +205,7 @@
       "subcategory": "Bottoms",
       "brand": "Nike",
       "price": 30.0,
-      "img": "https://picsum.photos/400?random=23"
+      "img": "https://source.unsplash.com/400x400/?man,shorts"
     },
     {
       "id": 24,
@@ -214,7 +214,7 @@
       "subcategory": "Shoes",
       "brand": "Zara",
       "price": 65.0,
-      "img": "https://picsum.photos/400?random=24"
+      "img": "https://source.unsplash.com/400x400/?woman,heels"
     },
     {
       "id": 25,
@@ -223,7 +223,7 @@
       "subcategory": "Tshirts",
       "brand": "H&M",
       "price": 9.99,
-      "img": "https://picsum.photos/400?random=25"
+      "img": "https://source.unsplash.com/400x400/?man,tshirt"
     },
     {
       "id": 26,
@@ -232,7 +232,7 @@
       "subcategory": "Jackets",
       "brand": "Babyhug",
       "price": 25.0,
-      "img": "https://picsum.photos/400?random=26"
+      "img": "https://source.unsplash.com/400x400/?kids,raincoat"
     },
     {
       "id": 27,
@@ -241,7 +241,7 @@
       "subcategory": "Jackets",
       "brand": "Levi's",
       "price": 75.0,
-      "img": "https://picsum.photos/400?random=27"
+      "img": "https://source.unsplash.com/400x400/?woman,jacket"
     },
     {
       "id": 28,
@@ -250,7 +250,7 @@
       "subcategory": "Accessories",
       "brand": "Nike",
       "price": 20.0,
-      "img": "https://picsum.photos/400?random=28"
+      "img": "https://source.unsplash.com/400x400/?man,cap"
     },
     {
       "id": 29,
@@ -259,7 +259,7 @@
       "subcategory": "Dress",
       "brand": "Mango",
       "price": 55.0,
-      "img": "https://picsum.photos/400?random=29"
+      "img": "https://source.unsplash.com/400x400/?woman,dress"
     },
     {
       "id": 30,
@@ -268,7 +268,7 @@
       "subcategory": "Tops",
       "brand": "H&M",
       "price": 14.0,
-      "img": "https://picsum.photos/400?random=30"
+      "img": "https://source.unsplash.com/400x400/?kids,pajamas"
     },
     {
       "id": 31,
@@ -277,7 +277,7 @@
       "subcategory": "Shoes",
       "brand": "Zara",
       "price": 85.0,
-      "img": "https://picsum.photos/400?random=31"
+      "img": "https://source.unsplash.com/400x400/?man,shoes"
     },
     {
       "id": 32,
@@ -286,7 +286,7 @@
       "subcategory": "Accessories",
       "brand": "Zara",
       "price": 110.0,
-      "img": "https://picsum.photos/400?random=32"
+      "img": "https://source.unsplash.com/400x400/?woman,handbag"
     },
     {
       "id": 33,
@@ -295,7 +295,7 @@
       "subcategory": "Shoes",
       "brand": "Babyhug",
       "price": 15.0,
-      "img": "https://picsum.photos/400?random=33"
+      "img": "https://source.unsplash.com/400x400/?baby,shoes"
     },
     {
       "id": 34,
@@ -304,7 +304,7 @@
       "subcategory": "Bottoms",
       "brand": "Gap",
       "price": 50.0,
-      "img": "https://picsum.photos/400?random=34"
+      "img": "https://source.unsplash.com/400x400/?man,cargo"
     },
     {
       "id": 35,
@@ -313,7 +313,7 @@
       "subcategory": "Tops",
       "brand": "Polo",
       "price": 45.0,
-      "img": "https://picsum.photos/400?random=35"
+      "img": "https://source.unsplash.com/400x400/?man,sweater"
     },
     {
       "id": 36,
@@ -322,7 +322,7 @@
       "subcategory": "Tops",
       "brand": "H&M",
       "price": 8.5,
-      "img": "https://picsum.photos/400?random=36"
+      "img": "https://source.unsplash.com/400x400/?woman,tanktop"
     },
     {
       "id": 37,
@@ -331,7 +331,7 @@
       "subcategory": "Accessories",
       "brand": "Babyhug",
       "price": 7.0,
-      "img": "https://picsum.photos/400?random=37"
+      "img": "https://source.unsplash.com/400x400/?kids,hat"
     },
     {
       "id": 38,
@@ -340,7 +340,7 @@
       "subcategory": "Bottoms",
       "brand": "Mango",
       "price": 40.0,
-      "img": "https://picsum.photos/400?random=38"
+      "img": "https://source.unsplash.com/400x400/?woman,trousers"
     },
     {
       "id": 39,
@@ -349,7 +349,7 @@
       "subcategory": "Jackets",
       "brand": "Nike",
       "price": 70.0,
-      "img": "https://picsum.photos/400?random=39"
+      "img": "https://source.unsplash.com/400x400/?man,running"
     },
     {
       "id": 40,
@@ -358,7 +358,7 @@
       "subcategory": "Accessories",
       "brand": "Zara",
       "price": 35.0,
-      "img": "https://picsum.photos/400?random=40"
+      "img": "https://source.unsplash.com/400x400/?woman,sunglasses"
     },
     {
       "id": 41,
@@ -367,7 +367,7 @@
       "subcategory": "Accessories",
       "brand": "Babyhug",
       "price": 5.0,
-      "img": "https://picsum.photos/400?random=41"
+      "img": "https://source.unsplash.com/400x400/?baby,socks"
     },
     {
       "id": 42,
@@ -376,7 +376,7 @@
       "subcategory": "Tshirts",
       "brand": "H&M",
       "price": 15.0,
-      "img": "https://picsum.photos/400?random=42"
+      "img": "https://source.unsplash.com/400x400/?man,tshirt"
     },
     {
       "id": 43,
@@ -385,7 +385,7 @@
       "subcategory": "Dress",
       "brand": "H&M",
       "price": 32.0,
-      "img": "https://picsum.photos/400?random=43"
+      "img": "https://source.unsplash.com/400x400/?woman,dress"
     },
     {
       "id": 44,
@@ -394,7 +394,7 @@
       "subcategory": "Jackets",
       "brand": "Nike",
       "price": 40.0,
-      "img": "https://picsum.photos/400?random=44"
+      "img": "https://source.unsplash.com/400x400/?kids,windbreaker"
     },
     {
       "id": 45,
@@ -403,7 +403,7 @@
       "subcategory": "Shoes",
       "brand": "Zara",
       "price": 120.0,
-      "img": "https://picsum.photos/400?random=45"
+      "img": "https://source.unsplash.com/400x400/?man,boots"
     },
     {
       "id": 46,
@@ -412,7 +412,7 @@
       "subcategory": "Bottoms",
       "brand": "Mango",
       "price": 48.0,
-      "img": "https://picsum.photos/400?random=46"
+      "img": "https://source.unsplash.com/400x400/?woman,trousers"
     },
     {
       "id": 47,
@@ -421,7 +421,7 @@
       "subcategory": "Accessories",
       "brand": "Nike",
       "price": 55.0,
-      "img": "https://picsum.photos/400?random=47"
+      "img": "https://source.unsplash.com/400x400/?man,backpack"
     },
     {
       "id": 48,
@@ -430,7 +430,7 @@
       "subcategory": "Accessories",
       "brand": "Polo",
       "price": 30.0,
-      "img": "https://picsum.photos/400?random=48"
+      "img": "https://source.unsplash.com/400x400/?kids,backpack"
     },
     {
       "id": 49,
@@ -439,7 +439,7 @@
       "subcategory": "Shoes",
       "brand": "Zara",
       "price": 75.0,
-      "img": "https://picsum.photos/400?random=49"
+      "img": "https://source.unsplash.com/400x400/?woman,heels"
     },
     {
       "id": 50,
@@ -448,7 +448,7 @@
       "subcategory": "Tshirts",
       "brand": "Polo",
       "price": 35.0,
-      "img": "https://picsum.photos/400?random=50"
+      "img": "https://source.unsplash.com/400x400/?man,polo"
     }
   ],
   "cart": [],
